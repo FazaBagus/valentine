@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    background: linear-gradient(135deg,#ff7eb3,#ff758c,#ff7eb3);
+    background-size: 300% 300%;
+    animation: bgMove 8s infinite alternate;
+    font-family:'Poppins', sans-serif;
+    text-align:center;
+    overflow:hidden;
+    color:white;
+}
+
+@keyframes bgMove{
+    0%{background-position:left;}
+    100%{background-position:right;}
+}
+
+.slide{
+    display:none;
+    padding:30px;
+}
+
+.active{
+    display:block;
+    animation: fade 0.8s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    font-family:'Pacifico', cursive;
+    font-size:40px;
+    text-shadow:0 0 20px white;
+}
+
+img{
+    width:220px;
+    border-radius:20px;
+    margin:20px 0;
+    box-shadow:0 0 30px pink;
+}
+
+p{
+    font-size:18px;
+    max-width:350px;
+    margin:auto;
+}
+
+button{
+    margin-top:25px;
+    padding:10px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4d6d;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#ffe0ec;
+}
+
+.musicBtn{
+    position:fixed;
+    top:10px;
+    right:10px;
+    background:white;
+    color:#ff4d6d;
+    border:none;
+    padding:8px 15px;
+    border-radius:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.heart{
+    position:absolute;
+    bottom:-10px;
+    font-size:20px;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp{
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+    <source src="bestpart.mp3" type="audio/mpeg">
+</audio>
+
+<!-- TOMBOL MUSIC -->
+<button class="musicBtn" onclick="toggleMusic()">🎵 Music</button>
+
+<!-- SLIDE 0 -->
+<div class="slide active">
+    <h1>Happy Valentine Day Sayangg 💕</h1>
+    <button onclick="nextSlide()">Next 💖</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide">
+    <img src="finshit1.jpeg">
+    <p>
+        kamu tuh cantikkk banget tauu...  
+        jadinya tiap hari malah makin sayang kann ahaha 😌💘  
+        curang banget sih jadi orang lucu + gemes diborong gituu.
+    </p>
+    <button onclick="nextSlide()">Next 😆</button>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <img src="finshit2.jpeg">
+    <p>
+        maaf yaa sayang kalau aku suka bikin kesel,  
+        tapi jujur emang akunya jail aja sii 🤦‍♂️💕  
+        tapi jail jail gini rasa sayangnya ga ketampung tauu hehe
+    </p>
+    <button onclick="nextSlide()">Next 💕</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <img src="finshit3.jpeg">
+    <p>
+        sumpah ya, emang aku tu udah gabisa sama yang lainn  
+        udah cocok banget sama kamu dan ga mau lagi sama yang lainn
+        semoga yaa doa kita bersama di masa depan terkabul ya sengg.
+    </p>
+    <button onclick="nextSlide()">Next 💘</button>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <img src="finshit4.jpeg">
+    <p>
+        Intinya sih…  
+        aku mungkin suka becanda, suka tengil,  
+        tapi rasa sayangnya beneran nggak bercanda 💞
+        rill banget ini mahh...
+    </p>
+    <button onclick="nextSlide()">Last 💌</button>
+</div>
+
+<!-- SLIDE END -->
+<div class="slide">
+    <h1>💖 Kamu Itu Spesial 💖</h1>
+    <p>
+        Terima kasih udah jadi versi kamu yang sekarang.  
+        Jangan berubah jadi orang lain ya…  
+        cukup jadi orang yang selalu bikin aku senyum sendiri 😌💕  
+    </p>
+    <p style="margin-top:15px;">
+        Semoga hari kamu selalu manis,  
+        se-manis senyum kamu yang bikin candu itu 💘
+    </p>
+    <button onclick="nextSlide()">Next 💞</button>
+</div>
+
+<!-- SLIDE AJAKAN -->
+<div class="slide" id="questionSlide">
+    <h1>Mau ga kita tetep barengg? 🥺💖</h1>
+    <div style="margin-top:30px; position:relative; height:150px;">
+        <button onclick="yesAnswer()">Iya 💕</button>
+        <button id="noBtn" 
+        style="position:absolute;"
+        onmouseover="moveNoButton()">Tidak 😝</button>
+    </div>
+</div>
+
+<!-- SLIDE TERIMA KASIH -->
+<div class="slide">
+    <h1>Hehe makasii sayangg 💖</h1>
+    <p>
+        Janji ya kita saling jaga,  
+        saling sabar, saling ngertiin 😌💕  
+        aku bakal terus berusaha jadi yang terbaik buat kamu.
+    </p>
+    <p style="margin-top:15px;">
+        Love you always and forever 💘
+    </p>
+</div>
+
+<script>
+let current=0;
+const slides=document.querySelectorAll(".slide");
+const music=document.getElementById("bgMusic");
+let musicStarted=false;
+
+function nextSlide(){
+    slides[current].classList.remove("active");
+    current++;
+    slides[current].classList.add("active");
+
+    if(!musicStarted){
+        music.volume=0.5;
+        music.play();
+        musicStarted=true;
+    }
+}
+
+function toggleMusic(){
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
+    }
+}
+
+// JAWABAN IYA
+function yesAnswer(){
+    slides[current].classList.remove("active");
+    current++;
+    slides[current].classList.add("active");
+}
+
+// TOMBOL TIDAK KABUR
+function moveNoButton(){
+    const btn=document.getElementById("noBtn");
+    btn.style.top=Math.random()*100+"px";
+    btn.style.left=Math.random()*200+"px";
+}
+
+// HEART EFFECT
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,300);
+</script>
